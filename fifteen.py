@@ -45,13 +45,33 @@ def playFifteen():
     clock = pygame.time.Clock()
 
     while not done:
+
+        holePos = grid.index(16)
+        
         for event in pygame.event.get(): 
             if event.type == pygame.QUIT: 
                 done = True 
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                pos = pygame.mouse.get_pos()
-                column = pos[0] // WIDTH
-                row = pos[1] // HEIGHT
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    if holePos % 4 != 3:
+                        grid[holePos] = grid[holePos+1]
+                        grid[holePos+1] = 16
+                        holePos += 1
+                if event.key == pygame.K_RIGHT:
+                    if holePos % 4:
+                        grid[holePos] = grid[holePos-1]
+                        grid[holePos-1] = 16
+                        holePos -= 1
+                if event.key == pygame.K_UP:
+                    if holePos//4 != 3:
+                        grid[holePos] = grid[holePos+4]
+                        grid[holePos+4] = 16
+                        holePos += 4
+                if event.key == pygame.K_DOWN:
+                    if holePos//4:
+                        grid[holePos] = grid[holePos-4]
+                        grid[holePos-4] = 16
+                        holePos -= 4
 
         
         # fill colors
@@ -72,11 +92,19 @@ def playFifteen():
                             screen.set_at( ( WIDTH*x + j, HEIGHT*y + i  ), BLACK ) 
 
         pygame.display.flip()
-        time.sleep(2)
-        done = True
-        # clock.tick(60)
+        clock.tick(10)
+
+        std = True
+        for i in range(1,16):
+            if grid[i]<grid[i-1]:
+                std = False
+        if std:
+            done = True
+            print("Fifteen Puzzle Solved!")
+        
     pygame.quit()
 
 # multiple windows kinda work
-playFifteen()
+if __name__=='__main__':
+    playFifteen()
 # playFifteen()

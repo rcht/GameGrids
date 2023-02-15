@@ -83,5 +83,7 @@ def playColorSwitch():
     pygame.quit()
 
 # multiple windows kinda work
-playColorSwitch()
+if __name__=='__main__':
+    playColorSwitch()
+
 
