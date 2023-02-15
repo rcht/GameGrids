@@ -32,7 +32,25 @@ def playFifteen():
         for column in range(4):
             grid.append( row*4 + column + 1 )  
     random.shuffle(grid)
-    # print(grid)
+
+    # parity check
+    while True:
+        inv = 0
+        dummygrid = [i for i in grid]
+        for i in range(16):
+            for j in range(i):
+                if (dummygrid[i]%16)*(dummygrid[j]%16) and dummygrid[i]<dummygrid[j]:
+                    inv += 1
+        zeroPos = dummygrid.index(16)
+        posPar = (zeroPos//4)%2
+
+        # print(posPar)
+        # print(inv)
+        if (posPar + inv) % 2 == 1:
+            break
+        random.shuffle(grid)
+        # break
+
     pygame.init()
 
     WINDOW_SIZE = [WIDTH*4, HEIGHT*4]

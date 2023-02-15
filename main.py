@@ -8,7 +8,7 @@ print("2 -> Fifteen Puzzle")
 
 while True:
     try:
-        inp = int(input("Play a game?").strip())
+        inp = int(input("Play a game? ").strip())
     except:
         print("Invalid input. Ending.")
         break

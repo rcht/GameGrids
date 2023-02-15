@@ -12,7 +12,7 @@ def playColorSwitch():
     HEIGHT = 40
     MARGIN = 5
 
-    NUM = 5
+    NUM = 4
 
     def valid(x, y):
         if x<0 or y<0 or x>=NUM or y>=NUM:
@@ -78,6 +78,7 @@ def playColorSwitch():
 
         if allEq:
             done = True
+            print("ColorSwitch solved!")
 
 
     pygame.quit()

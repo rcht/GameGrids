@@ -1,10 +1,10 @@
 # fifteen
 
-- create parity check
+- all done :D
 
 # colorswitch
 
-- create end screen tk window
+- all done :D
 
 # loopover
 
