@@ -3,8 +3,11 @@
 import time
 import random
 import pygame
+import tkinter
 
-def playColorSwitch():
+def playColorSwitch(runState):
+
+    runState[0] = True
 
     BLACK = (0, 0, 0)
     WHITE = (255, 0, 0)
@@ -83,16 +86,26 @@ def playColorSwitch():
 
         if allEq:
             done = True
-            print("ColorSwitch solved!\n")
-            print(f"Total time: {round(time.time()-startTime,2)} seconds")
-            print(f"Total moves: {moves}\n")
 
 
 
+    runState[0] = False
     pygame.quit()
+
+    if allEq:
+        infmenu = tkinter.Tk()
+        slv = tkinter.Label(infmenu,text="Congrats! Solved!\n")
+        slv.pack()
+        tm = tkinter.Label(infmenu, text=f"Total Time Taken: {round(time.time()-startTime,2)} seconds\n")
+        tm.pack()
+        mv = tkinter.Label(infmenu, text=f"Total Moves Taken: {moves}\n")
+        mv.pack()
+        infmenu.mainloop()
+
 
 # multiple windows kinda work
 if __name__=='__main__':
-    playColorSwitch()
+    rns = [True]
+    playColorSwitch(rns)
 
 

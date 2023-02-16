@@ -4,8 +4,9 @@ Bonus project for CSE101 (Introduction to Programming) course in IIIT Delhi
 
 ## Libraries used
 
+- `tkinter`
 - `pygame`
-- `math`, `os`, `random`, `time` in standard library
+- `math`, `os`, `random`, `time` (in standard library)
 
 ## How to use
 

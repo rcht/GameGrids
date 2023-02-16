@@ -4,8 +4,11 @@ import bitmaps
 import time
 import pygame
 import random
+import tkinter
 
-def playFifteen():
+def playFifteen(runState):
+
+    runState[0] = True
 
     BLACK = (0, 0, 0)
     WHITE = (255, 255, 255)
@@ -125,13 +128,23 @@ def playFifteen():
                 std = False
         if std:
             done = True
-            print("Fifteen Puzzle Solved!")
-            print(f"\nTime taken: {round(time.time()-startTime,2)} seconds")
-            print(f"Moves taken: {moveCount}\n")
+
         
+    runState[0] = False
     pygame.quit()
+
+    if std:
+        infmenu = tkinter.Tk()
+        slv = tkinter.Label(infmenu,text="Congrats! Solved!\n")
+        slv.pack()
+        tm = tkinter.Label(infmenu, text=f"Total Time Taken: {round(time.time()-startTime,2)} seconds\n")
+        tm.pack()
+        mv = tkinter.Label(infmenu, text=f"Total Moves Taken: {moveCount}\n")
+        mv.pack()
+        infmenu.mainloop()
 
 # multiple windows kinda work
 if __name__=='__main__':
-    playFifteen()
+    rns = [True]
+    playFifteen(rns)
 # playFifteen()
