@@ -12,7 +12,7 @@
 
 # twiddle
 
-- create entire thing
+- all done :D
 
 # main gui
 

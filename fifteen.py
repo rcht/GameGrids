@@ -62,6 +62,9 @@ def playFifteen():
 
     clock = pygame.time.Clock()
 
+    startTime = time.time()
+    moveCount = 0
+
     while not done:
 
         holePos = grid.index(16)
@@ -75,21 +78,25 @@ def playFifteen():
                         grid[holePos] = grid[holePos+1]
                         grid[holePos+1] = 16
                         holePos += 1
+                        moveCount += 1
                 if event.key == pygame.K_RIGHT:
                     if holePos % 4:
                         grid[holePos] = grid[holePos-1]
                         grid[holePos-1] = 16
                         holePos -= 1
+                        moveCount += 1
                 if event.key == pygame.K_UP:
                     if holePos//4 != 3:
                         grid[holePos] = grid[holePos+4]
                         grid[holePos+4] = 16
                         holePos += 4
+                        moveCount += 1
                 if event.key == pygame.K_DOWN:
                     if holePos//4:
                         grid[holePos] = grid[holePos-4]
                         grid[holePos-4] = 16
                         holePos -= 4
+                        moveCount += 1
 
         
         # fill colors
@@ -119,6 +126,8 @@ def playFifteen():
         if std:
             done = True
             print("Fifteen Puzzle Solved!")
+            print(f"\nTime taken: {round(time.time()-startTime,2)} seconds")
+            print(f"Moves taken: {moveCount}\n")
         
     pygame.quit()
 

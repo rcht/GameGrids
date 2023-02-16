@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+
+import time
 import random
 import pygame
 
@@ -37,6 +39,8 @@ def playColorSwitch():
     allDone = False
 
     clock = pygame.time.Clock()
+    startTime = time.time()
+    moves = 0
 
     while not done:
         for event in pygame.event.get(): 
@@ -44,6 +48,7 @@ def playColorSwitch():
                 done = True 
                 allDone = True
             elif event.type == pygame.MOUSEBUTTONDOWN:
+                moves += 1
                 pos = pygame.mouse.get_pos()
                 column = pos[0] // (WIDTH + MARGIN)
                 row = pos[1] // (HEIGHT + MARGIN)
@@ -78,7 +83,10 @@ def playColorSwitch():
 
         if allEq:
             done = True
-            print("ColorSwitch solved!")
+            print("ColorSwitch solved!\n")
+            print(f"Total time: {round(time.time()-startTime,2)} seconds")
+            print(f"Total moves: {moves}\n")
+
 
 
     pygame.quit()
